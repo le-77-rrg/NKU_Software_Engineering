@@ -1,0 +1,52 @@
+data_size: 12000
+window_size: 120
+result_length: 11881
+brute_force_time_seconds: 0.010739
+monotonic_queue_time_seconds: 0.001627
+array_queue_time_seconds: 0.001540
+monotonic_speedup_vs_brute_force: 6.60x
+array_speedup_vs_brute_force: 6.97x
+array_speed_ratio_vs_monotonic_queue: 1.06x
+
+Brute-force cProfile top calls:
+47770 function calls in 0.014 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.003    0.003    0.014    0.014 sliding_window_max.py:54(sliding_window_max_brute_force)
+    11881    0.008    0.000    0.008    0.000 {built-in method builtins.max}
+        1    0.001    0.001    0.002    0.002 sliding_window_max.py:19(validate_window_input)
+    24003    0.001    0.000    0.001    0.000 {built-in method builtins.isinstance}
+    11881    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+Monotonic-queue cProfile top calls:
+59886 function calls in 0.007 seconds
+
+   Ordered by: cumulative time
+   List reduced from 9 to 8 due to restriction <8>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.004    0.004    0.007    0.007 sliding_window_max.py:78(sliding_window_max_monotonic_queue)
+        1    0.001    0.001    0.002    0.002 sliding_window_max.py:19(validate_window_input)
+    24003    0.001    0.000    0.001    0.000 {built-in method builtins.isinstance}
+    11881    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+    11893    0.000    0.000    0.000    0.000 {method 'pop' of 'collections.deque' objects}
+    12000    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+      105    0.000    0.000    0.000    0.000 {method 'popleft' of 'collections.deque' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+Array-queue cProfile top calls:
+35889 function calls in 0.006 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.003    0.003    0.006    0.006 sliding_window_max.py:116(sliding_window_max_array_queue)
+        1    0.001    0.001    0.002    0.002 sliding_window_max.py:19(validate_window_input)
+    24003    0.001    0.000    0.001    0.000 {built-in method builtins.isinstance}
+    11881    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.len}
